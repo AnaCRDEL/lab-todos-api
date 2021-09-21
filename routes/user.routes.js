@@ -4,7 +4,7 @@ const router = Router();
 
 router.get('/', async (request, response) => {
     try {
-        const users = await User.find();
+        const users = await User.find().populate('todos');
         response.status(200).json(users);
     } catch (error) {
         response.status(500).json(error)
